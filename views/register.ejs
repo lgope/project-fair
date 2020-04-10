@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sign Up</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <!--===============================================================================================-->
+</head>
+
+<body>
+
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('/images/bg-01.jpg');">
+            <div class="wrap-login100">
+                <form action="/create-new-user" method="POST" class="login100-form validate-form">
+                    <span class="login100-form-logo">
+                        <i class="zmdi zmdi-landscape"></i>
+                    </span>
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Sign UP
+                    </span>
+
+                    <!-- user name -->
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="text" name="username" placeholder="username" required>
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+
+                    <!-- varsity id -->
+                    <div class="wrap-input100 validate-input" data-validate="Enter Ins_id">
+                        <input class="input100" type="text" name="ins_id" placeholder="Varsity Id" required>
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+
+                    <!-- semester -->
+                    <div class="form-group wrap-input100 validate-input">
+                        <label for="course"></label>
+                        <div class="form-select">
+                            <select name="semester" id="semester" class="input100 text-dark" required>
+                                <option value="">Semester</option>
+                                <option value="Spring-2018">Spring-2018</option>
+                                <option value="Summer-2018">Summer-2018</option>
+                                <option value="Fall-2018">Fall-2018</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- course -->
+                    <div class="form-group wrap-input100 validate-input">
+                        <label for="course"></label>
+                        <div class="form-select">
+                            <select name="course" id="course" class="input100 text-dark" required>
+                                <option value="">Course</option>
+                                <option value="SE133">SE133</option>
+                                <option value="SWE231">SWE231</option>
+                                <option value="SWE233">SWE233</option>
+                                <option value="SWE313">SWE313</option>
+                                <option value="SWE333">SWE333</option>
+                                <option value="SWE331">SWE331</option>
+                                <option value="SWE332">SWE332</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="Email" name="email" placeholder="Email" required>
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" name="password" placeholder="Password" required>
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Signup
+                        </button>
+                    </div>
+
+                    <div class="text-center p-t-90">
+                        <a class="txt1" href="/">
+                            Login?
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/vendor/bootstrap/js/popper.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/vendor/daterangepicker/moment.min.js"></script>
+    <script src="/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="/js/main.js"></script>
+
+</body>
+
+</html>
