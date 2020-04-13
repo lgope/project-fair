@@ -12,7 +12,7 @@ const app = express();
 require('./config/passport')(passport);
 
 // DB Config
-const db = keys.mongoURI;
+const db = keys.mongoURL;
 
 
 // Connect to MongoDB
