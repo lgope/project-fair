@@ -6,18 +6,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please provide your name']
   },
-  varsityId: {
-    type: String,
-    required: [true, 'Please provide your Varsity Id']
-  },
-  semester: {
-    type: String,
-    required: [true, 'Please provide your semester']
-  },
-  course: {
-    type: String,
-    required: [true, 'Please provide your course']
-  },
   email: {
     type: String,
     required: [true, 'Please provide your email'],

@@ -15,6 +15,7 @@
             class="form-control"
             placeholder="Enter Name"
             value="<%= typeof name != 'undefined' ? name : '' %>"
+            required
           />
         </div>
 
@@ -28,6 +29,7 @@
             class="form-control"
             placeholder="Enter varsity Id"
             value="<%= typeof name != 'undefined' ? name : '' %>"
+            required
           />
         </div>
 
@@ -70,6 +72,7 @@
             class="form-control"
             placeholder="Enter Email"
             value="<%= typeof email != 'undefined' ? email : '' %>"
+            required
           />
         </div>
         <div class="form-group">
@@ -81,6 +84,7 @@
             class="form-control"
             placeholder="Create Password"
             value="<%= typeof password != 'undefined' ? password : '' %>"
+            required
           />
         </div>
         <div class="form-group">
@@ -92,6 +96,7 @@
             class="form-control"
             placeholder="Confirm Password"
             value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+            required
           />
         </div>
         <button type="submit" class="btn btn-primary btn-block">

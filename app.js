@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
+const keys = require('./config/keys');
 
 const app = express();
 
@@ -11,25 +12,33 @@ const app = express();
 require('./config/passport')(passport);
 
 // DB Config
-const db = require('./config/keys').mongoURI;
+const db = keys.mongoURI;
+
 
 // Connect to MongoDB
-// mongoose
-//   .connect(
-//     db,
-//     { useNewUrlParser: true }
-//   )
-//   .then(() => console.log('MongoDB Connected'))
-//   .catch(err => console.log(err));
-mongoose.connect('mongodb://localhost/project-fair-test', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true
-})
-.then(() => console.log('DB connection successful!'))
-.catch(err => {
-  console.log(Error, err.message);
-});
+mongoose
+  .connect(
+    db,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
+    }
+  )
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
+
+// mongoose.connect('mongodb://localhost/project-fair-test', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useCreateIndex: true,
+//   useFindAndModify: false
+// })
+//   .then(() => console.log('DB connection successful!'))
+//   .catch(err => {
+//     console.log(Error, err.message);
+//   });
 
 
 // EJS
@@ -43,7 +52,7 @@ app.use(express.urlencoded({ extended: true }));
 // Express session
 app.use(
   session({
-    secret: 'secret',
+    secret: keys.sessionSecret,
     resave: true,
     saveUninitialized: true
   })
@@ -57,7 +66,7 @@ app.use(passport.session());
 app.use(flash());
 
 // Global variables
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');

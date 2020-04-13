@@ -15,36 +15,16 @@
         <!-- navbar -->
         <%- include('../common/navbar.ejs') %>
 
-        <h1>Welcome to Management Panel <span class="text-capitalize"> <%= managementName %> 🎉 </span></h1>
-
-        <% if (proposals) { %>
-        <% proposals.forEach(proposal => { %>
         <div class="card mt-4">
             <div class="card-body">
-
-                <!-- Project Title -->
                 <h4 class="card-title"><%= proposal.projectTitle %></h4>
-
-                <!-- Student Id -->
-                <span>Student ID: <%= proposal.studentId %></span>
-
-                <!-- Project Submission Time -->
+                <span>ID: <%= proposal.studentId %></span>
                 <div class="card-subtitle text-muted mb-2">
                     <p>Created At : <%= proposal.createdAt.toLocaleDateString() %></p>
                 </div>
-
-                <!-- Project Description -->
-                <div class="card-text mb-2">
-                    <span class="text-info">Description :</span> <br>
-                    <%= proposal.projectDes %>
-                </div>
-
-                <!-- Project Language -->
-                <div class="card-text mb-2">
-                    <span class="text-info">Project Lang :</span> <br> 
-                    <%= proposal.projectLang %>
-                </div>
-
+                <div class="card-text mb-2"> description: <br> <%= proposal.projectDes %></div>
+                <div class="card-text mb-2"> Project Lang : <br> <%= proposal.projectLang %></div>
+                
                 <!-- status -->
                 <% if (proposal.isApproved === 'Pending') { %>
                     <span class="text-info">Status : <%= proposal.isApproved %></span> <br>
@@ -53,23 +33,14 @@
                 <% } else { %>
                     <span class="text-danger">Status : <%= proposal.isApproved %></span> <br>
                <% } %>
-
-                <div class="mt-2">
-                    <a href="proposals/<%= proposal.slug %>" class="btn btn-primary">Read More</a>
-                </div>
             </div>
-
         </div>
 
-        <% }) %>
-
-
-        <% } else { %>
-        <div class="">
-            <p class="text-dark">NO project submitted yet! 🙂</p>
+        <div class="btn-section mt-2">
+            <a href="/management" class="btn btn-secondary">All Proposals</a>
+            <a href="/management/proposal-accept/<%= proposal.studentId %>" class="btn btn-info">Accept</a>
+            <a href="/management/proposal-reject/<%= proposal.studentId %>" class="btn btn-danger">Reject</a>
         </div>
-        <% } %>
-
     </div>
 
     <!-- Footer -->
