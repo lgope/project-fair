@@ -8,10 +8,10 @@ const Student = require('../models/Student');
 const { forwardAuthenticated } = require('../config/auth');
 
 // Login Page
-router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
+router.get('/login', forwardAuthenticated, (req, res) => res.render('login', { pageTitle: 'Login | Project Fair 🙂' }));
 
 // Register Page
-router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
+router.get('/register', forwardAuthenticated, (req, res) => res.render('register', { pageTitle: 'Register | Project Fair 📝' }));
 
 // Register
 router.post('/register', (req, res) => {

@@ -10,18 +10,18 @@ router.get('/', ensureAuthenticated, ensureUserIsStudent, async (req, res) => {
     const student = await Student.findOne({ email: req.user.email });
     const proposal = await Proposal.findOne({ studentId: student.studentId });
 
-    res.render('student/studentHomePage.ejs', { student, proposal })
+    res.render('student/studentHomePage.ejs', { pageTitle: `Project Fair | ${student.studentName}`, student, proposal })
 });
 
 router.get('/new-proposal/:studentId', ensureAuthenticated, ensureUserIsStudent, (req, res) => {
-    res.render('student/newProposal.ejs', { studentId: req.params.studentId });
+    res.render('student/newProposal.ejs', { pageTitle: `Project Fair | New Proposal 👍`, studentId: req.params.studentId });
 
 });
 
 router.post('/new-proposal', ensureAuthenticated, ensureUserIsStudent, async (req, res) => {
 
     try {
-        const { student_id, project_title, project_des, project_lang } = req.body;   
+        const { student_id, project_title, project_des, project_lang } = req.body;
 
         await Proposal.create({
             studentId: student_id,
