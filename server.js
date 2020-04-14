@@ -7,7 +7,7 @@ const keys = require('./config/keys');
 const db = keys.mongoURL;
 
 
-// Connect to MongoDB
+// Connect to MongoDB with atlas
 // mongoose
 //     .connect(
 //         db,
@@ -21,6 +21,8 @@ const db = keys.mongoURL;
 //     .then(() => console.log('MongoDB Connected'))
 //     .catch(err => console.log(err));
 
+
+// Connect to MongoDB with localhost
 mongoose.connect('mongodb://localhost/project-fair-test', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
