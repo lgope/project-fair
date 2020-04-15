@@ -7,7 +7,7 @@ const { ensureAuthenticated, forwardAuthenticated, ensureUserIsManagement } = re
 
 router.get('/', ensureAuthenticated, ensureUserIsManagement, async (req, res) => {
     const proposals = await Proposal.find().sort({ createdAt: 'desc' });
-    res.render('management/managementHomePage.ejs', { managementName: req.user.userName, proposals });
+    res.render('management/managementHomePage.ejs', { pageTitle: `Management Panel | Project Fair`, managementName: req.user.userName, proposals });
 });
 
 
@@ -15,7 +15,7 @@ router.get('/proposals/:slug', ensureAuthenticated, ensureUserIsManagement, asyn
     const proposal = await Proposal.findOne({ slug: req.params.slug });
 
     if (proposal == null) res.redirect('back');
-    res.render('management/showProject', { proposal });
+    res.render('management/showProject', { pageTitle: `Project Fair | ${proposal.projectTitle}`, proposal });
 });
 
 // Proposal or project accepting route

@@ -1,80 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Project Fair</title>
-</head>
+    <!-- navbar -->
+    <%- include('../common/navbar.ejs') %>
 
-<body>
-    <div class="container">
+    <h1>Welcome to Management Panel <span class="text-capitalize"> <%= managementName %> 🎉 </span></h1>
 
-        <!-- navbar -->
-        <%- include('../common/navbar.ejs') %>
+    <% if (proposals) { %>
+    <% proposals.forEach(proposal => { %>
+    <div class="card mt-4">
+        <div class="card-body">
 
-        <h1>Welcome to Management Panel <span class="text-capitalize"> <%= managementName %> 🎉 </span></h1>
+            <!-- Project Title -->
+            <h4 class="card-title"><%= proposal.projectTitle %></h4>
 
-        <% if (proposals) { %>
-        <% proposals.forEach(proposal => { %>
-        <div class="card mt-4">
-            <div class="card-body">
+            <!-- Student Id -->
+            <span>Student ID: <%= proposal.studentId %></span>
 
-                <!-- Project Title -->
-                <h4 class="card-title"><%= proposal.projectTitle %></h4>
-
-                <!-- Student Id -->
-                <span>Student ID: <%= proposal.studentId %></span>
-
-                <!-- Project Submission Time -->
-                <div class="card-subtitle text-muted mb-2">
-                    <p>Created At : <%= proposal.createdAt.toLocaleDateString() %></p>
-                </div>
-
-                <!-- Project Description -->
-                <div class="card-text mb-2">
-                    <span class="text-info">Description :</span> <br>
-                    <%= proposal.projectDes %>
-                </div>
-
-                <!-- Project Language -->
-                <div class="card-text mb-2">
-                    <span class="text-info">Project Lang :</span> <br> 
-                    <%= proposal.projectLang %>
-                </div>
-
-                <!-- status -->
-                <% if (proposal.isApproved === 'Pending') { %>
-                    <span class="text-info">Status : <%= proposal.isApproved %></span> <br>
-                <% } else if (proposal.isApproved === 'Accepted') { %>
-                    <span class="text-success">Status : <%= proposal.isApproved %></span> <br>
-                <% } else { %>
-                    <span class="text-danger">Status : <%= proposal.isApproved %></span> <br>
-               <% } %>
-
-                <div class="mt-2">
-                    <a href="proposals/<%= proposal.slug %>" class="btn btn-primary">Read More</a>
-                </div>
+            <!-- Project Submission Time -->
+            <div class="card-subtitle text-muted mb-2">
+                <p>Created At : <%= proposal.createdAt.toLocaleDateString() %></p>
             </div>
 
+            <!-- Project Description -->
+            <div class="card-text mb-2">
+                <span class="text-info">Description :</span> <br>
+                <%= proposal.projectDes %>
+            </div>
+
+            <!-- Project Language -->
+            <div class="card-text mb-2">
+                <span class="text-info">Project Lang :</span> <br>
+                <%= proposal.projectLang %>
+            </div>
+
+            <!-- status -->
+            <% if (proposal.isApproved === 'Pending') { %>
+            <span class="text-info">Status : <%= proposal.isApproved %></span> <br>
+            <% } else if (proposal.isApproved === 'Accepted') { %>
+            <span class="text-success">Status : <%= proposal.isApproved %></span> <br>
+            <% } else { %>
+            <span class="text-danger">Status : <%= proposal.isApproved %></span> <br>
+            <% } %>
+
+            <div class="mt-2">
+                <a href="proposals/<%= proposal.slug %>" class="btn btn-primary">Read More</a>
+            </div>
         </div>
-
-        <% }) %>
-
-
-        <% } else { %>
-        <div class="">
-            <p class="text-dark">NO project submitted yet! 🙂</p>
-        </div>
-        <% } %>
 
     </div>
 
-    <!-- Footer -->
-    <%- include('../common/footer.ejs') %>
-    <!-- Footer -->
-</body>
+    <% }) %>
 
-</html>
+    <div class="m-2"></div>
+    <% } else { %>
+    <div class="">
+        <p class="text-dark">NO project submitted yet! 🙂</p>
+    </div>
+    <% } %>
+
+</div>
+
+<!-- Footer -->
+<%- include('../common/footer.ejs') %>
+<!-- Footer -->
+</div>

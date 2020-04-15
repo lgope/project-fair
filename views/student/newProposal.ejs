@@ -1,47 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="">
+    <!-- Navbar -->
+    <%- include('../common/navbar.ejs') %>
+    <h1 class="mb-4">New Proposal</h1>
+    <form action="/student/new-proposal" method="POST">
+        <div class="form-group">
+            <label for="student_id">Student Id</label>
+            <input type="text" name="student_id" id="student_id" class="form-control" value="<%= studentId %>" readonly>
+        </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Create New Proposal</title>
-</head>
+        <div class="form-group">
+            <label for="title">Project Title</label>
+            <input type="text" name="project_title" id="title" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="project_describtion">Project Describtion</label>
+            <textarea name="project_des" id="project_des" class="form-control" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="project_lang">Project Lang</label>
+            <textarea name="project_lang" id="project_lang" class="form-control" required></textarea>
+        </div>
 
-<body>
-    <div class="container">
-        <!-- Navbar -->
-        <%- include('../common/navbar.ejs') %>
-        <h1 class="mb-4">New Proposal</h1>
-        <form action="/student/new-proposal" method="POST">
-            <div class="form-group">
-                <label for="student_id">Student Id</label>
-                <input type="text" name="student_id" id="student_id" class="form-control" value="<%= studentId %>"
-                    readonly>
-            </div>
+        <a href="/student" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
 
-            <div class="form-group">
-                <label for="title">Project Title</label>
-                <input type="text" name="project_title" id="title" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="project_describtion">Project Describtion</label>
-                <textarea name="project_des" id="project_des" class="form-control" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="project_lang">Project Lang</label>
-                <textarea name="project_lang" id="project_lang" class="form-control" required></textarea>
-            </div>
-
-            <a href="/student" class="btn btn-secondary">Cancel</a>
-            <button type="submit" class="btn btn-primary">Save</button>
-        </form>
-    </div>
-
+<div class="fixed-bottom">
     <!-- Footer -->
     <%- include('../common/footer.ejs') %>
     <!-- Footer -->
-</body>
-
-</html>
+</div>
