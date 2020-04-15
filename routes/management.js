@@ -5,7 +5,7 @@ const { ensureAuthenticated, forwardAuthenticated, ensureUserIsManagement } = re
 
 // Welcome Page
 
-router.get('/', ensureAuthenticated, ensureUserIsManagement, async (req, res) => {
+router.get('/:managementName', ensureAuthenticated, ensureUserIsManagement, async (req, res) => {
     const proposals = await Proposal.find().sort({ createdAt: 'desc' });
     res.render('management/managementHomePage.ejs', { pageTitle: `Management Panel | Project Fair`, managementName: req.user.userName, proposals });
 });
@@ -15,7 +15,7 @@ router.get('/proposals/:slug', ensureAuthenticated, ensureUserIsManagement, asyn
     const proposal = await Proposal.findOne({ slug: req.params.slug });
 
     if (proposal == null) res.redirect('back');
-    res.render('management/showProject', { pageTitle: `Project Fair | ${proposal.projectTitle}`, proposal });
+    res.render('management/showProject', { pageTitle: `Project Fair | ${proposal.projectTitle}`, proposal, managementName: req.user.userName });
 });
 
 // Proposal or project accepting route
@@ -27,7 +27,7 @@ router.get('/proposal-accept/:studentId', ensureAuthenticated, ensureUserIsManag
 
         if (proposal == null) res.redirect('back');
 
-        res.redirect(`/management`);
+        res.redirect(`/management/${req.user.userName}`);
     } catch (error) {
         console.log(error);
     }
@@ -43,7 +43,8 @@ router.get('/proposal-reject/:studentId', ensureAuthenticated, ensureUserIsManag
 
         if (proposal == null) res.redirect('back');
 
-        res.redirect(`/management`);
+        res.redirect(`/management/${req.user.userName}`);
+
     } catch (error) {
         console.log(error);
     }

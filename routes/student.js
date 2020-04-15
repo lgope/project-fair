@@ -5,7 +5,7 @@ const router = express.Router();
 const { ensureAuthenticated, forwardAuthenticated, ensureUserIsStudent } = require('../config/auth');
 
 // Welcome Page
-router.get('/', ensureAuthenticated, ensureUserIsStudent, async (req, res) => {
+router.get('/:studentName', ensureAuthenticated, ensureUserIsStudent, async (req, res) => {
 
     const student = await Student.findOne({ email: req.user.email });
     const proposal = await Proposal.findOne({ studentId: student.studentId });
@@ -14,7 +14,7 @@ router.get('/', ensureAuthenticated, ensureUserIsStudent, async (req, res) => {
 });
 
 router.get('/new-proposal/:studentId', ensureAuthenticated, ensureUserIsStudent, (req, res) => {
-    res.render('student/newProposal.ejs', { pageTitle: `Project Fair | New Proposal 👍`, studentId: req.params.studentId });
+    res.render('student/newProposal.ejs', { pageTitle: `Project Fair | New Proposal 👍`, studentId: req.params.studentId, studentName: req.user.userName });
 
 });
 
@@ -30,7 +30,7 @@ router.post('/new-proposal', ensureAuthenticated, ensureUserIsStudent, async (re
             projectLang: project_lang
         })
 
-        res.redirect('/student');
+        res.redirect(`/student/${req.user.userName}`);
     } catch (error) {
         console.log(error);
     }
